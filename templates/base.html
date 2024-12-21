@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %} 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="class_project_2">
+    <title>{% block title %}{% endblock title %} - CDC FORMS </title>
+    {% block stylesheets %} {% endblock stylesheets %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+    {% endblock head %}
+</head>
+<body>
+    <header>
+        <h1>User Login</h1>  
+    </header>  
+    <main>
+        {% block content %} {% endblock content %}
+        {% block javascript %} {% endblock javascript %}
+    </main>
+    <div id="footer">
+        {% block footer %}
+            &copy; Copyright 2008 by <a href="https://school.mildredgroup.com">School of Programming and Software Development</a>.
+        {% endblock footer %}
+    </div>
+</body>
+</html>

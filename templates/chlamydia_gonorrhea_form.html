@@ -1,0 +1,274 @@
+{% extends "base.html" %}
+    <head>
+    {% block head %}
+    {{ super() }}
+    {% block title %}Chlamydia and Gonorrhea Page{% endblock title %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+    {% endblock head %}
+    </head>
+
+    <body>
+        <header class="header row">
+            <div class="col-12">
+            <h1>Chlamydia & Gonorrhea Form Page</h1>
+            <div class="menu-icon">&#9775</div>
+            </div>
+            <!-- Navigation -->
+            <nav class="navbar col-12">
+                <ul>
+                    <li><a href="./login.html">Logout</a></li>
+                </ul>
+            </nav>
+        </header>
+        <section class="row">
+            <div class="col-3">
+            <div class="sidenav ">
+                <ul>
+                <li><a href="./hepatitis_b_form.html">Hepatitis_B_Case_Report_Form</a></li>
+                <li><a href="./congenital_syphilis_form.html">Congenital Syphilis Form</a></li>
+                <li><a href="./chlamydia_gonorrhea_form.html" class="sidenav-focus">Chlamydia & Gonorrhea Case Reort Form</a></li>
+                </ul>
+            </div>
+            </div>
+            <div class="col-9">
+                <article>
+                    <div class="form-container">
+                        <h2 class="case_report_head">STI Case Reporting Form for Chlamydia and Gonorrhea</h2>
+                        <form method="post" name="clinicalinfo" onsubmit="return validateclinicalinfo();" autocomplete="off" class="clinic-form">
+                            <table>
+                                <tr>
+                                    <th colspan="4"> Clinic Information </th>
+                                </tr>
+                                <tr>
+                                    <td><label for="clinicdate">Date:</label></td>
+                                    <td><input type="text" id="clinicdate" name="clinicdate" placeholder="dd/mm/yyyy" onblur="return validatecdate();"/><span id="clinicdateErr"></span></td>
+                                    <td><label for="personcompletingf">Person Completing Form:</label></td>
+                                    <td><input type="text" id="personcompletingf" name="personcompletingf" onblur="return validatepcf();"><span id="personcompletingfErr"></span></td>
+                                </tr>
+                                <tr>
+                                    <td><label for="healthprovider">Health Provider:</label></td>
+                                    <td><input type="text" id="healthprovider" name="healthprovider" onblur="return validatehp();"><span id="healthproviderErr"></span></td>
+                                    <td><label for="contactphone">Contact phone number/fax:</label></td>
+                                    <td><input type="text" id="contactphone" name="contactphone" onblur="return validatecp();"><span id="contactphoneErr"></span></td>
+                                </tr>
+                            </table>
+                            <table>
+                                <tr>
+                                <p><i><b>
+                                    Your lab reported a communicable disease on the patient shown below and listed you as the provider. The Oregon Department of Human Services and Washington
+                                    County require additional information. The fax cover sheet you have received references Oregon Law (ORS 433) that requires you to report this information.
+                                    Please complete the form within 24 hours, or by the end of the next working day, and fax it back to our office at 503-846-3644. If you
+                                    prefer you may call to report the required information. We appreciate your cooperation and prompt handling of this confidential report.
+                                </b></i></p>
+                                </tr>
+                            </table>
+                            
+                            <table>
+                                <tr>
+                                <th colspan="10">Patient Information — Please complete all information requested below</th>
+                            </tr>
+                                <tr>
+                                    <td>1</td>
+                                    <td><label for="patient-name">Name:</label></td>
+                                    <td colspan="3"><input type="text" id="patient-name" name="name" onblur="return validatepn();"/><span id="patient-nameErr"></span></td>
+                                    <td><label for="patient-dob">Date of Birth:</label></td>
+                                    <td colspan="2"><input type="text" id="patient-dob" name="dob" placeholder="dd/mm/yyyy"/><span id="patient-dobErr"></span></td>
+                                    <td>Gender:</td>
+                                    <td>
+                                        <label><input type="radio" id="gender-male" name="gender[]" value="male"/> Male</label>
+                                        <label><input type="radio" id="gender-female" name="gender[]" value="female"> Female</label>
+                                        <label><input type="radio" id="gender-other" name="gender[]" value="other"> Other</label>
+                                        <span id="genderErr"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>Home Address:</td>
+                                    <td colspan="10"><input type="text" id="patient-address" name="address"></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>Phone Number:</td>
+                                    <td colspan="4"><input type="text" id="patient-phone" name="phone"></td>
+                                    <td>Alternative #:</td>
+                                    <td colspan="6"><input type="text" id="patient-alt-phone" name="alt-phone"></td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>Pregnancy Test Results:</td>
+                                    <td colspan="1">
+                                        <label><input type="radio" name="pregnancy-test" value="n/a"> N/A</label></td>
+                                        <td colspan="2"><label><input type="radio" id="pregnancy-test-negative" name="pregnancy-test[]" value="negative"> Negative</label></td>
+                                        <td colspan="2"><label><input type="radio" id="pregnancy-test-unknown" name="pregnancy-test[]" value="unknown"> Unknown</label></td>
+                                        <td colspan="2"><label><input type="radio" id="pregnancy-test-positive" name="pregnancy-test[]" value="positive"> Positive</label></td>
+                                        <td colspan="2"><label> If positive, how many weeks? <input type="text" id="pregnancy-test-weeks" name="weeks"></label></td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                <td>4</td>
+                                    <td>Ethnicity:</td>
+                                    <td colspan="2">
+                                        <label><input type="radio" id="ethnicity-hispanic" name="ethnicity[]" value="hispanic"> Hispanic</label>
+                                        <br/>
+                                        <label><input type="radio" id="ethnicity-non-hispanic" name="ethnicity[]" value="non-hispanic"> Non-Hispanic</label>
+                                        <br/>
+                                        <label><input type="radio" id="ethnicity-unk" name="ethnicity[]" value="unknown"> Unknown</label><br/>
+                                        <span id="ethnicityErr"></span>
+                                    </td>
+                                    <td>Race:</td>
+                                    <td colspan="2">
+                                        <label><input type="radio" id="race-white" name="race[]" value="white"> White</label><br>
+                                        <label><input type="radio" id="race-black" name="race[]" value="black"> Black</label><br>
+                                        <label><input type="radio" id="race-asian" name="race[]" value="asian"> Asian</label><br>
+                                        <label><input type="radio" id="race-american-indian" name="race[]" value="american-indian"> American Indian</label><br>
+                                        <label><input type="radio" id="race-alaskan" name="race[]" value="alaskan"> Alaskan</label><br>
+                                        <label><input type="radio" id="race-pacific-islander name="race[]" value="pacific-islander"> Pacific Islander</label><br>
+                                        <label><input type="radio" id="race-unk" name="race[]" value="unknown"> Unknown</label><br>
+                                        <label>Other: <input type="text" id="race-other" name="race-other"></label>
+                                        <span id="raceErr"></span>
+                                    </td>
+                                    <td>Gender of Sex Partner(s):</td>
+                                    <td colspan="3">
+                                        <label><input type="radio" id="partner-gender-male" name="partner-gender" value="male"> Male</label><br>
+                                        <label><input type="radio" id="partner-gender-female" name="partner-gender" value="female"> Female</label><br>
+                                        <label><input type="radio"id="partner-gender-both" name="partner-gender" value="both"> Both</label><br>
+                                        <label><input type="radio" id="partner-gender-unk" name="partner-gender" value="unknown"> Unknown</label><br>
+                                        <span id="partner-genderErr"></span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                <td>5</td>
+                                <td>Test Result Type:</td>
+                                <td colspan="2">
+                                    <label><input type="checkbox" id="test-result-chlamydia" name="test-result" value="chlamydia"> Chlamydia Positive Result</label>
+                                    <label>Date: <input type="text" id="chlamydia-date" name="chlamydia-date"></label>
+                                </td>
+                                <td colspan="2">
+                                    <label><input type="checkbox" id="test-result-gonorrhea" name="test-result" value="gonorrhea"> Gonorrhea Positive Result</label>
+                                    <label>Date: <input type="text" id="gonorrhea-date name="gonorrhea-date"></label>
+                                </td>
+                                <span id="test-resultErr"></span>
+                                <td colspan="4">
+                                    <label for="previous_hiv_testing">PREVIOUS HIV TESTING:</label>
+                                                <input type="checkbox" id="hiv_testing-yes" name="hiv_testing[]" value="Yes"> Yes
+                                                <input type="checkbox" id="hiv_testing-no" name="hiv_testing[]" value="No"> No
+                                                <input type="checkbox" id="hiv_testing-unk" name="hiv_testing[]" value="Unknown"> unknown<br>
+                                    <label for="if_yes_result">if yes, last result was?</label>
+                                            <input type="checkbox" id="hiv_result-pos" name="hiv_result[]" value="POS"> POS
+                                                <input type="checkbox" id="hiv_result-neg" name="hiv_result[]" value="NEG"> NEG
+                                                <input type="checkbox" id="hiv-result-unk" name="hiv_result[]" value="Unknown"> Unknown<br/>
+                                    <label for="last_test_month">Month of last test: &nbsp; </label>
+                                            <input type="text" id="last_test_month" name="last_test_month" id="last_test_month">
+                                            <label for="last_test_year">Year of last test: &nbsp; </label>
+                                            <input type="text" id="last_test_year" name="last_test_year" id="last_test_year">
+                                </td>                        
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Reason for Exam:</td>
+                                <td colspan="2">
+                                    <label><input type="checkbox" id="exam-reason-symptomatic" name="exam-reason[]" value="symptomatic"> Symptomatic</label>
+                                    <label><input type="checkbox" id="exam-reason-routine-exam" name="exam-reason[]" value="routine-exam"> Routine Exam</label>
+                                    <label><input type="checkbox" id="exam-reason-test-for-cure" name="exam-reason[]" value="test-for-cure"> Test for Cure</label>
+                                    <label><input type="checkbox" id="exam-reason-exposed-to-infection" name="exam-reason[]" value="exposed-to-infection"> Exposed to Infection</label>
+                                    <label><input type="checkbox" id="exam-reason-pregnant" name="exam-reason[]" value="pregnant"> Pregnant</label>
+                                    <span id="exam-reasonErr"></span>
+                                </td>
+                                <td>Diagnosis:</td>
+                                <td colspan="3">
+                                    <label><input type="checkbox" id="diagnosis-asymptomatic" name="diagnosis[]" value="asymptomatic"> Asymptomatic</label>
+                                    <label><input type="checkbox" id="diagnosis-symptomatic-uncomplicated" name="diagnosis[]" value="symptomatic-uncomplicated"> Symptomatic-Uncomplicated</label>
+                                    <label><input type="checkbox" id="diagnosis-pelvic-inflammatory" name="diagnosis[]" value="pid"> Pelvic Inflammatory Disease (PID)</label>
+                                    <label><input type="checkbox" id="diagnosis-ophthalmia" name="diagnosis[]" value="ophthalmia"> Ophthalmia/conjunctivitis</label>
+                                    <label><input type="checkbox" id="diagnosis-disseminated" name="diagnosis[]" value="disseminated"> Disseminated</label>
+                                    <span id="diagnosisErr"></span>
+                                </td>
+                                <td>Site(s):</td>
+                                <td colspan="2">
+                                    <label><input type="checkbox" id="sites-cervix" name="sites[]" value="cervix"> Cervix</label>
+                                    <label><input type="checkbox" id="sites-vaginal" name="sites[]" value="vaginal"> Vaginal</label>
+                                    <label><input type="checkbox" id="sites-urethra" name="sites[]" value="urethra"> Urethra</label>
+                                    <label><input type="checkbox" id="sites-rectum" name="sites[]" value="rectum"> Rectum</label>
+                                    <label><input type="checkbox" id="sites-ocular" name="sites[]" value="ocular"> Ocular</label>
+                                    <label><input type="checkbox" id="sitespharynx" name="sites[]" value="pharynx"> Pharynx</label>
+                                    <label><input type="checkbox" id="sites-other" name="sites[]" value="other"> Other</label>
+                                    <span id="sitesErr"></span>
+                                </td>
+                                <tr>
+                                <tr>
+                                    <td>7</td>
+                                <th colspan="5">Gonorrhea Treatment Plan:</th>
+                                <th colspan="4">Chlamydia Treatment Plan:</th>
+                                </tr>
+                                <td> </td>
+                                <td colspan="5">
+                                    <p><label><input type="checkbox" id="gonorrhea-treatment-rocephin" name="gonorrhea-treatment[]" value="rocephin"> Rocephin/Ceftriaxone 250mg IM x 1</label></p>
+                                    <p>PLUS</p>
+                                    <p><label><input type="checkbox" id="gonorrhea-treatment-azithromycin" name="gonorrhea-treatment[]" value="azithromycin"> Azithromycin 1gm orally in a single dose</label></p>
+                                    <p>Alternative Treatment Regimens:</p>
+                                    <p><label><input type="checkbox" id="gonorrhea-treatment-cefixime" name="gonorrhea-treatment[]" value="cefixime"> Cefixime 400mg orally in a single dose</label></p>
+                                    <p>AND</p>
+                                    <p><label><input type="checkbox" id="gonorrhea-treatment-azithromycin-1gm" name="gonorrhea-treatment[]" value="azithromycin"> Azithromycin 1gm orally in a single dose</label></p>
+                                    <p>OR</p>
+                                    <p><label><input type="checkbox" id="gonorrhea-treatment-doxycycline" name="gonorrhea-treatment[]" value="doxycycline"> Doxycycline 100mg BID x 7 days</label></p>
+                                </td>
+                                <td colspan="4">
+                                    <p><label><input type="checkbox" id="chlamydia-treatment-azithromycin name="chlamydia-treatment[]" value="azithromycin"> Azithromycin 1gm orally in a single dose</label></p>
+                                    <p>Date: <input type="date" id="chlamydia-date" name="chlamydia-date"></p>
+                                    <p>OR</p>
+                                    <p><label><input type="checkbox" id="chlamydia-treatment-doxycycline" name="chlamydia-treatment[]" value="doxycycline"> Doxycycline 100mg BID x 7 days</label></p>
+                                    <p>Alternative Treatment Regimens:</p>
+                                    <p><label><input type="checkbox" id="chlamydia-treatment-amoxicillin" name="chlamydia-treatment[]" value="amoxicillin"> Amoxicillin 500mg orally tid x 7 days</label></p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td colspan="5">If not treated yet — Patient notified of infection:</td>
+                                <td><label> <input type="radio" id="notified-yes" name="notified[]" value="yes"> Yes</label></td>
+                                <td><label><input type="radio" id="notified-no" name="notified[]" value="no"> No</label></td>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="5">Does the provider need assistance in contacting a client that has not responded for treatment?</td>
+                                <td><label><input type="radio" id="need-assistance-yes" name="need-assistance" value="yes"> Yes</label></td>
+                                <td><label><input type="radio" id="need-assistance-no" name="need-assistance" value="no"> No</label></td>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td colspan="9">Partner Management Plan — Ensuring Partner Treatment</td>
+                            </tr>
+                            <tr>
+                            <td></td>
+                                <td colspan="9">
+                                    <label>Expedited Partner Therapy dispensed at time of visit?</label>
+                                    <label><input type="radio" id="ept-no" name="ept" value="no"> No</label>
+                                    <label><input type="radio" id="ept-yes" name="ept" value="yes"> Yes</label>
+                                    <label>How many partners? <input type="text" id="partners-count" name="partners-count"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="10">
+                                    <p>When resources allow the health department will be contacting gonorrhea cases and high risk chlamydia cases to offer partner services. Please notify patient that public health worker may be contacting them to offer partner services.</p>
+                                    <label><input type="checkbox" id="provider-requests" name="provider-requests" value="no-contact"> Provider requests that client not be contacted by public health/provider will assure partner treatment</label>
+                                    <p>Current Recommended Treatment - See CDC Guidelines at: <a href="http://www.cdc.gov/std/treatment/">www.cdc.gov/std/treatment/</a></p>
+                                </td>
+                            </tr>
+                            </table> 
+                            <div>
+                                <button type="submit" value="submit" class="login-button">Submit</button>
+                            </div>                       
+                        </form>
+                    </div>
+                </article>  
+            </div>
+        </section>
+        <footer>
+            {% block footer %}
+            {{ super() }}
+            {% endblock footer %}
+        </footer>
+
+    </body>
+</html>

@@ -1,0 +1,375 @@
+{% extends "base.html" %}
+    <head>
+        {% block head %}
+        {{ super() }}
+        {% block title %}Chlamtdia and Gonorrhea Page{% endblock title %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+        {% endblock head %}
+    </head>
+    <body>
+        <header class="header row">
+          <div class="col-12">
+            <h1>Congenital Syphilis Form Page</h1>
+            <div class="menu-icon">&#9775</div>
+          </div>
+            <!-- Navigation -->
+            <nav class="navbar col-12">
+              <ul>
+                  <li><a href="./login.html">Logout</a></li>
+              </ul>
+            </nav>
+        </header>
+        <section class="row">
+          <div class="col-3">
+            <div class="sidenav ">
+              <ul>
+              <li><a href="./hepatitis_b_form.html">Hepatitis_B_Case_Report_Form</a></li>
+              <li><a href="./congenital_syphilis_form.html" class="sidenav-focus">Congenital Syphilis Form</a></li>
+              <li><a href="./chlamydia_gonorrhea_form.html">Chlamydia & Gonorrhea Case Reort Form</a></li>
+              </ul>
+            </div>
+          </div>
+            <div class="col-9">
+                <article>
+                    <div class="form-container">
+                      <h2 class="case_report_head">CONGENITAL SYPHILIS CASE INVESTIGATION AND REPORTING</h2>
+                      <form class="cs-form">
+                        <table>
+                            <tr >
+                                <td colspan="3">1. Report date to health dept.<br/>
+                                <input type="date" id="report-date" name="report-date"><label><input type="checkbox" name="report-unk"> Unk</label></td>
+          
+                                <td colspan="3">2. Reporting state FIPS code:<br/>
+                                <input type="text" id="state-fips" name="state-fips" placeholder="Reporting State"><label><input type="checkbox" id="state-fips-unk" name="state-fips-unk"> Unk</label>
+                                </td>
+                                <td colspan="4">3. Reporting county FIPS code:<br>
+                                <input type="text" id="county-fips" name="county-fips" placeholder="Reporting Country Name"> <label><input type="checkbox" id="country-fips-unk" name="county-fips-unk"> Unk</label></td>
+                                
+                            </tr>
+                            <tr>
+                                <th colspan="10" class="section-header">Part I. MATERNAL INFORMATION</th>
+                            </tr>
+                            <tr>
+                                <td colspan="5"><label for="mothers-state">4. Mother’s state FIPS code:</label>
+                                <input type="text" id="mothers-state" name="mother-state-fips" placeholder="Mother’s Residence State"><label><input type="checkbox" name="mother-state-unk"> Unk</label></td>
+                                
+                                <td colspan="5">5. Mother’s Country of residence: <br><small>(leave blank if USA)</small>
+                                <input type="text" id="mother-country-residence" name="mother-country-residence" placeholder="Mother’s Country of Residence "></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><label for="mothers-county-fips">6. Mother’s residence county FIPS code:</label>
+                                <input type="text" id="mother-county-fips" name="mother-county-fips" placeholder="Mother’s County of Residence"> <label><input type="checkbox" name="mother-county-fips-unk"> Unk</label></td>
+          
+                                <td colspan="2"><label for="mother-zip">7. Mother’s residence ZIP code:</label>
+                                <input type="text" id="mother-zip" name="mother-zip"><label><input type="checkbox" id="mother-zip-unk" name="mother-zip">Unk</label></td>
+                                
+                                <td colspan="3"><label for="mother-dob">8. Mother’s Date of Birth:</label>
+                                <input type="date" id="mother-dob" name="mother-dob"> <label><input type="checkbox" id="mother-dob-unk" name="mother-dob-unk"> Unk</label></td>
+                           
+                              
+                                <td colspan="2"><label for="mother-ob">. Mother’s obstetric history:</label>
+                                <br/>
+                                    <label>G: <input type="text" name="mother-ob-g"></label>
+                                    <label>P: <input type="text" name="mother-ob-p"></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><label for="matherlmp">10.Last menstrual period (LMP) <small>(before delivery):</small></label><br/>
+                                <input type="date" id="mother-lmp" name="mother-lmp"> <label><input type="checkbox" id="mother-lmp-unk" name="mother-lmp-unk"> Unk</label></td>
+                                
+                                <td colspan="4"><label for="first-prenatal">11. a) Indicate date of first prenatal visit:</label>
+                                <input type="date" id="first-prenatal" name="first-prenatal"><br/> <label><input type="checkbox" id="no-prenatal" name="no_prenatal" value="no-prenatal"> No prenatal care (Go to Q12)</label><label><input type="checkbox" name="first-prenatal-unk"> Unk</label></td>
+                           
+                                <td colspan="3"><label for="prenatal-trimester">b) Indicate trimester of first prenatal visit:</label>
+                                <br/>
+                                    <label><input type="checkbox" name="prenatal-trimester[]" value="1st"> 1st trimester</label>
+                                    <label><input type="checkbox" name="prenatal-trimester[]" value="2nd"> 2nd trimester</label>
+                                    <label><input type="checkbox" name="prenatal-trimester[]" value="3rd"> 3rd trimester</label>
+                                    <label><input type="checkbox" name="prenatal-trimester[]" value="4th"> Unk</label>
+                                </td>
+                            </tr>
+                            <tr></tr>
+                                <td colspan="3"><label for="mother-ethnicity"> 12.Mother’s ethnicity:</label>
+                                <br>
+                                    <label><input type="checkbox" id="mother-ethnicity-hispanic" name="mother-ethnicity[]" value="hispanic"> 1 Hispanic or Latino</label>
+                                    <label><input type="checkbox" id="mother-ethnicity-non-hispanic" name="mother-ethnicity[]" value="non-hispanic"> 2 Non-Hispanic or Latino</label>
+                                    <label><input type="checkbox" id="mother-ethnicity-unk" name="mother-ethnicity[]" value="unk">  Unk</label>
+                                </td>
+                                <td colspan="7"><label for="mather-race">13. Mother’s race <small>(check all that apply)</small></label>
+                                    <label><input type="checkbox" id="mother-race-american-race" name="mother-race[]" value="american-indian"> American Indian/Alaska Native</label>
+                                    <label><input type="checkbox" id="mother-race-asian" name="mother-race[]" value="asian"> Asian</label>
+                                    <label><input type="checkbox" id="mother-race-black" name="mother-race[]" value="black"> Black or African American</label>
+                                    <label><input type="checkbox" id="mother-race-hawaiian" name="mother-race[]" value="hawaiian"> Native Hawaiian or Other Pacific Islander</label>
+                                    <label><input type="checkbox" id="mother-race-white" name="mother-race[]" value="white"> White</label>
+                                    <label><input type="checkbox" id="mother-race-other" name="mother-race[]" value="other"> Other</label>
+                                    <label><input type="checkbox" id="mother-race-unk" name="mother-race[]" value="unk"> 9 Unk</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6"><label for="first-prenatal-test">14. Did mother have non-treponemal or treponemal tests at:</label>
+                                 a) first prenatal visit?
+                                <label><input type="checkbox" id="first-prenatal-test" name="first-prenatal-test" value="yes"> Yes</label> <label><input type="radio" name="first-prenatal-test" value="no"> No</label> <label><input type="radio" name="first-prenatal-test" value="unk"> Unk</label>
+                                b) 28–32 weeks gestation?
+                                <label><input type="checkbox" id="gestation-test" name="gestation-test" value="yes"> Yes</label> <label><input type="radio" name="gestation-test" value="no"> No</label> <label><input type="radio" name="gestation-test" value="unk"> Unk</label>
+                                c) delivery?
+                                <label><input type="checkbox" id="delivery-test" name="delivery-test" value="yes"> Yes</label> <label><input type="radio" name="delivery-test" value="no"> No</label> <label><input type="radio" name="delivery-test" value="unk"> Unk</label></td>
+                           
+                                <td colspan="4"><labe for="marital-status">15. Mother’s marital status:</labe>
+                                <br>
+                                    <label><input type="checkbox" id="single" name="marital-status[]" value="single"> 1 Single, never married</label>
+                                    <label><input type="checkbox" id="married" name="marital-status[]" value="married"> 2 Married</label>
+                                    <label><input type="checkbox" id="divorced" name="marital-status[]" value="divorced"> 3 Separated/Divorced</label>
+                                    <label><input type="checkbox" id="widow" name="marital-status[]" value="widow"> 4 Widow</label>
+                                    <label><input type="checkbox" id="status-other" name="marital-status[]" value="other"> 8 Other</label>
+                                    <label><input type="checkbox" id="status-unk" name="marital-status[]" value="unk"> 9 Unk</label>
+                                </td>
+                            </tr>
+                            <tr>
+                            
+                              <td>16. Indicate during pregnancy and delivery, dates and results of a) most recent and b) first non-treponemal tests:</td>
+                              <td>Date</td>
+                              <td colspan="2">Results</td>
+                              <td colspan="2">Titer</td>
+
+                              <td>18. What was mother’s HIV status during pregnancy?</td>
+                              <td colspan="4">
+                                  <label><input type="radio" id="hiv-status-positive" name="hiv-status[]" value="positive"> P positive</label>
+                                  <label><input type="radio" id="hiv-status-equivocal" name="hiv-status[]" value="equivocal"> E equivocal test</label>
+                                  <label><input type="radio" id="hiv-status-negative" name="hiv-status[]" value="negative"> N negative</label>
+                                  <label><input type="radio" id="hiv-status-tested" name="hiv-status[]" value="not-tested"> X patient not tested</label>
+                                  <label><input type="radio" id="hiv-status-unk" name="hiv-status[]" value="unk"> U Unk</label>
+                              </td>
+                          </tr>
+                          <tr>
+                            
+                              <td>a.</td>
+                              <td><input type="date" name="recent-test-date"> <label><input type="checkbox" name="recent-test-unk"> Unk</label></td>
+                              <td><label><input type="radio" name="recent-test-result" value="reactive"> Reactive</label></td>
+                              <td><label><input type="radio" name="recent-test-result" value="non-reactive"> Nonreactive</label></td>
+                              <td colspan="2"><input type="text" name="recent-test-titer"></td>
+
+                              
+                              <td>19. What CLINICAL stage of syphilis did mother have during pregnancy?</td>
+                              <td colspan="4">
+                                  <label><input type="radio" id="syphilis-stage-primary" name="syphilis-stage[]" value="primary"> 1 primary</label>
+                                  <label><input type="radio" id="syphilis-stage-secondary" name="syphilis-stage[]" value="secondary"> 2 secondary</label>
+                                  <label><input type="radio" id="syphilis-stage-early-latent" name="syphilis-stage[]" value="early-latent"> 3 early latent</label>
+                                  <label><input type="radio" id="syphilis-stage-late-latent" name="syphilis-stage[]" value="late-latent"> 4 late or late latent</label>
+                                  <label><input type="radio" id="syphilis-stage-unk" name="syphilis-stage[]" value="unknown">  Unk</label>
+                              </td>
+                             
+                          </tr>
+                          <tr>
+                              
+                              <td>b.</td>
+                              <td><input type="date" id="first-test-date" name="first-test-date"> <label><input type="checkbox" id="first-date-unk" name="first-test-unk"> Unk</label></td>
+                              <td><label><input type="radio"id="first-test-result-reactive" name="first-test-result" value="reactive"> Reactive</label></td>
+                              <td><label><input type="radio" id="first-test-result-non-reactive" name="first-test-result" value="non-reactive"> Nonreactive</label></td>
+                              <td colspan="2"><input type="text" id="first-test-titer" name="first-test-titer"></td>
+
+                              
+                            <td>20. What SURVEILLANCE stage of syphilis did mother have during pregnancy?</td>
+                            <td colspan="4">
+                                <label><input type="radio" id="surveillance-stage-primary" name="surveillance-stage[]" value="primary"> 1 primary</label>
+                                <label><input type="radio" id="surveillance-stage-secondary" name="surveillance-stage[]" value="secondary"> 2 secondary</label>
+                                <label><input type="radio" id="surveillance-stage-early-latent" name="surveillance-stage[]" value="early-latent"> 3 early latent</label>
+                                <label><input type="radio" id="surveillance-stage-late-latent" name="surveillance-stage[]" value="late-latent"> 4 late or late latent</label>
+                                <label><input type="radio" id="surveillance-stage-other" name="surveillance-stage[]" value="other"> 8 Other</label>
+                                <label><input type="radio" id="surveillance-stage-unknown" name="surveillance-stage[]" value="unknown"> 9 Unk</label>
+                            </td>
+                          </tr>
+                          <tr>
+                              
+                              <td colspan="2">17. Indicate during pregnancy, date, type, and result of a) first and b) most recent treponemal tests:</td>
+                              <td>Date</td>
+                              <td colspan="3">Test Type</td>
+                              <td colspan="3">Results</td>
+                          </tr>
+                          <tr>
+                              
+                              <td colspan="2">a.</td>
+                              <td><input type="date" id="first-trep-test-date" name="first-trep-test-date"></td>
+                              <td colspan="3"><input type="text" id="first-trep-test-date" name="first-trep-test-type"></td>
+                              <td colspan="3"><input type="text" id="first-trep-test-result" name="first-trep-test-result"></td>
+                          </tr>
+                          <tr>
+                              
+                              <td colspan="2">b.</td>
+                              <td><input type="date" id="recent-trep-test-date" name="recent-trep-test-date"></td>
+                              <td colspan="3"><input type="text" id="recent-trep-test-type" name="recent-trep-test-type"></td>
+                              <td colspan="3"><input type="text" id="recent-trep-test-result" name="recent-trep-test-result"></td>
+                          </tr>
+                          <tr>
+                            
+                        </tr>
+                        <tr>
+                            
+                            <td colspan="3">21. When did mother receive her first dose of benzathine penicillin?
+                            <input type="date" name="penicillin-date"><br>
+                                <label><input type="radio" id="penicillin-time-before-pregnancy" name="penicillin-time[]" value="before-pregnancy"> 1 Before pregnancy</label>
+                                <label><input type="radio" id="penicillin-time-first-trimester" name="penicillin-time[] value="first-trimester"> 2 1st trimester</label>
+                                <label><input type="radio" id="penicillin-time-second-trimester" name="penicillin-time[] value="second-trimester"> 3 2nd trimester</label>
+                                <label><input type="radio" id="penicillin-time-third-trimester" name="penicillin-time[] value="third-trimester"> 4 3rd trimester</label>
+                                <label><input type="radio" id="penicillin-time-no-treatment" name="penicillin-time[] value="no-treatment"> 5 No Treatment (Go to Q24)</label>
+                                <label><input type="radio" id="penicillin-time-unk" name="penicillin-time[] value="unknown"> 9 Unk</label>
+                            </td>
+                        
+                            <td colspan="4">22. What was mother’s treatment?
+                            <br>
+                                <label><input type="radio" id="treatment-2.4-units" name="treatment[]" value="2.4-units"> 1 2.4 M units benzathine penicillin</label>
+                                <label><input type="radio" id="treatment-4.8-units" name="treatment[]" value="4.8-units"> 2 4.8 M units benzathine penicillin</label>
+                                <label><input type="radio" id="treatment-7.2-units" name="treatment[]" value="7.2-units"> 3 7.2 M units benzathine penicillin</label>
+                                <label><input type="radio" id="treatment-other" name="treatment[]" value="other"> 8 Other</label>
+                                <label><input type="radio" id="treatment-unknown" name="treatment[]" value="unknown"> 9 Unk</label>
+                            </td>
+                        
+                            <td colspan="4">23. Did mother have an appropriate serologic response?
+                            <br>
+                                <label><input type="radio" id="serologic-response-yes" name="serologic-response[]" value="yes"> 1 Yes, appropriate response</label>
+                                <label><input type="radio" id="serologic-response-no" name="serologic-response[]" value="no"> 2 No, inappropriate response: evidence of treatment failure or reinfection</label>
+                                <label><input type="radio" id="serologic-response-unknown" name="serologic-response[]" value="response-unknown"> 3 Response could not be determined from available non-treponemal titer information</label>
+                                <label><input type="radio" id="serologic-response-not-enough-time" name="serologic-response[]" value="not-enough-time"> 4 Not enough time for titer to change</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="10">PART II. INFANT/CHILD INFORMATION</th>
+                        </tr>
+                        <tr>
+                            
+                            <td colspan="2">24. Date of Delivery<br/>
+                            <input type="text" id="date-of-delivery-unk" name="date-of-delivery">  Unk</td>
+
+                            <td colspan="4"> 25. Vital status
+                            <br/>
+                                <label><input type="radio" id="vital-status-alive" name="vital-status[]" value="alive"> 1 Alive (Go to Q27)</label>
+                                <label><input type="radio" id="vital-status-stillborn" name="vital-status[]" value="stillborn"> 3 Stillborn (Go to Q26)</label>
+                                <label><input type="radio" id="vital-status-born-alive" name="vital-status[]" value="born-alive"> 2 Born alive, then died (Go to Q27)</label>
+                                <label><input type="radio" id="vital-status-unknown" name="vital-status[]" value="unknown"> 9 Unknown (Go to Q27)</label>
+                            </td>
+
+                            <td colspan="2">26. Indicate date of death<br/>
+                            <input type="text" id="date-of-death" name="date-of-death">  Unk</td>
+
+                            <td colspan="2">27. Birthweight (in grams)<br/>
+                            <input type="text" id="birthweight name="birthweight">  Unk</td>
+                        </tr>
+                        <tr>
+                          
+                            <td colspan="3">28. Estimated gestational age (in weeks)<br/>
+                            <input type="text" id="gestational-age" name="gestational-age">  Unk</td>
+
+                            <td colspan="3">29. a) Did infant/child have a reactive non-treponemal test for syphilis?
+                              <br>
+                                  <label><input type="radio" id="reactive-non-treponemal-test-yes" name="reactive-non-treponemal-test[]" value="yes"> 1 Yes</label>
+                                  <label><input type="radio" id="reactive-non-treponemal-test-no" name="reactive-non-treponemal-test[]" value="no"> 2 No</label>
+                                  <label><input type="radio" id="reactive-non-treponemal-test-no-test" name="reactive-non-treponemal-test[]" value="no-test"> 3 No test</label>
+                                  <label><input type="radio" id="reactive-non-treponemal-test-unk" name="reactive-non-treponemal-test[]" value="unknown">  Unk</label>
+                              </td>
+                              <td colspan="4">b) When was the infant/child’s first reactive treponemal test for syphilis?
+                                <br/>
+                                    <input type="text" id="first-reactive-treponemal-test-date" name="first-reactive-treponemal-test-date">
+                                    <label><input type="radio" id="first-reactive-treponemal-test-positive" name="first-reactive-treponemal-test" value="positive"> 1 Positive</label>
+                                    <label><input type="radio"id="first-reactive-treponemal-test-negative" name="first-reactive-treponemal-test" value="negative"> 2 Negative</label>
+                                    <label><input type="radio" id="first-reactive-treponemal-test-unknown" name="first-reactive-treponemal-test" value="unknown">  Unk</label>
+                                </td>
+                        </tr>
+                       
+                        <tr>
+                            <td colspan="3">30. Did infant/child have a reactive treponemal test for syphilis?
+                            <br/>
+                                <label><input type="radio" name="reactive-treponemal-test" value="yes"> 1 Yes</label>
+                                <label><input type="radio" name="reactive-treponemal-test" value="no"> 2 No</label>
+                                <label><input type="radio" name="reactive-treponemal-test" value="no-test"> 3 No test</label>
+                                <label><input type="radio" name="reactive-treponemal-test" value="unknown">  Unk</label>
+                            </td>
+                            <td colspan="3">b) When was the infant/child’s first reactive treponemal test for syphilis?
+                            <input type="text" id="first-reactive-treponemal-test-date" name="first-reactive-treponemal-test-date">  Unk</td>
+
+                            <td colspan="4">31. Did infant/child have darkfield exam, PCR, or special stains?
+                              <br>
+                                  <label><input type="radio" id="darkfield-exam-yes" name="darkfield-exam[]" value="yes"> 1 Yes, positive</label>
+                                  <label><input type="radio" id="darkfield-exam-no" name="darkfield-exam[]" value="no"> 2 Yes, negative</label>
+                                  <label><input type="radio" id="darkfield-exam-no-test" name="darkfield-exam[]" value="no-test"> 3 No test</label>
+                                  <label><input type="radio" id="darkfield-exam-unknown" name="darkfield-exam[]" value="unknown"> 9 Unk</label>
+                              </td>
+                        </tr>
+                       
+                        <tr>
+                          
+                            <td colspan="10">32. Did the infant/child have any signs of CS?
+                            <br/>
+                                <label><input type="radio" id="cs-signs-yes" name="cs-signs[]" value="yes"> 1 Yes, hepatomegaly/jaundice</label>
+                                <label><input type="radio" id="cs-signs-no" name="cs-signs[]" value="no"> 2 No signs/asymptomatic</label>
+                                <label><input type="radio" id="cs-signs-other" name="cs-signs[]" value="other"> 3 Other</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            
+                            <td colspan="6">33. Did the infant/child have long bone X-rays?
+                            <br>
+                                <label><input type="radio" id="long-bone-xray-yes" name="long-bone-xray[]" value="yes"> 1 Yes, changes consistent with CS</label>
+                                <label><input type="radio" id="long-bone-xray-no" name="long-bone-xray[]" value="no"> 2 No changes</label>
+                                <label><input type="radio" id="long-bone-xray-no-xray" name="long-bone-xray[]" value="no-xray"> 3 No X-rays</label>
+                            </td>
+
+                            <td colspan="4">34. Did the infant/child have a CSF-VDRL?
+                              <br>
+                                  <label><input type="radio" id="csf-vdrl-yes-reactive" name="csf-vdrl[]" value="yes-reactive"> 1 Yes, reactive</label>
+                                  <label><input type="radio" id="csf-vdrl-no-reactive" name="csf-vdrl[]" value="yes-nonreactive"> 2 Yes, nonreactive</label>
+                                  <label><input type="radio" id="csf-vdrl-no-test" name="csf-vdrl[]" value="no-test"> 3 No test</label>
+                              </td>
+                        </tr>
+
+                        <tr>
+                          
+                          <td colspan="10">35. Did the infant/child have a CSF WBC or CSF protein test?
+                          <br/>
+                              <label><input type="radio" name="csf-wbc" value="yes-elevated"> 1 Yes, WBC/protein elevated</label>
+                              <label><input type="radio" name="csf-wbc" value="both-elevated"> 2 Both tests elevated</label>
+                              <label><input type="radio" name="csf-wbc" value="neither-elevated"> 3 Neither elevated</label>
+                              <label><input type="radio" name="csf-wbc" value="no-test"> 5 No test</label>
+                              <label><input type="radio" name="csf-wbc" value="unknown">  Unk</label>
+                          </td>
+                      </tr>
+                      <tr>
+                          
+                          <td colspan="10">Was the infant/child treated?
+                          <br/>
+                              <label><input type="radio" id="yes-penicillin" name="treated[]" value="yes-penicillin"> 1 Yes, with aqueous/procaine penicillin for 10 days</label>
+                              <label><input type="radio" id="yes-benzathine" name="treated[]" value="yes-benzathine"> 3 Yes, with benzathine penicillin x1</label>
+                              <label><input type="radio" id="other-treatment" name="treated[]" value="other"> 4 Other treatment</label>
+                              <label><input type="radio" id="no-treatment" name="treated[]" value="no-treatment"> 5 No treatment</label>
+                              <label><input type="radio" id="treated-unk" name="treated[]" value="unknown"> 9 Unk</label>
+                          </td>
+                      </tr>
+                      <tr>
+                          <th colspan="10">PART III. CONGENITAL SYPHILIS CASE CLASSIFICATION</th>
+                      </tr>
+                      <tr>
+                        
+                          <td colspan="10"> 37.Classification
+                          <br/>
+                              <label><input type="radio" id="classification-not-a-case" name="classification[]" value="not-a-case"> 1 Not a case</label>
+                              <label><input type="radio" id="classification-confirmed-case" name="classification[]" value="confirmed-case"> 2 Confirmed case</label>
+                              <label><input type="radio" id="classification-syphilitic-stillbirth" name="classification[]" value="syphilitic-stillbirth"> 3 Syphilitic stillbirth</label>
+                              <label><input type="radio" id="classification-problem-case" name="classification[]" value="probable-case"> 4 Probable case</label>
+                          </td>
+                      </tr>
+                        </table>
+                        <div>
+                          <button type="submit" value="save and exit" class="login-button">Save and Exit</button>
+                          <button type="submit" value="save and exit" class="login-button">Save and Submit</button>
+                        </div>
+                      </form>            
+                    </div>
+                </article>
+            </div>
+        </section>
+        <footer>
+            {% block footer %}
+            {{ super() }}
+            {% endblock footer %}
+        </footer>
+
+    </body>
+</html>

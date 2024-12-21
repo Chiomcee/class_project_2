@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+    <head>
+        {% block head %}
+        {{ super() }}
+        {% block title %}Chlamydia and Gonorrhea Page{% endblock title %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+        {% endblock head %}
+    </head>
+    <body>
+        <header class="header row">
+          <div class="col-12">
+            <h1>HepatitisB_Preg Women Reporting Form Page</h1>
+            <div class="menu-icon">&#9775</div>
+          </div>
+            <!-- Navigation -->
+            <nav class="navbar col-12">
+              <ul>
+                  <li><a href="./login">Logout</a></li>
+              </ul>
+            </nav>
+        </header>
+        <section class="row">
+          <div class="col-3">
+            <div class="sidenav">
+              <ul>
+              <li><a href="./hepatitis_b_form.html" class="sidenav-focus">Hepatitis_B_Case_Report_Form</a></li>
+              <li><a href="./congenital_syphilis_form.html">Congenital Syphilis Form</a></li>
+              <li><a href="./chlamydia_gonorrhea_form.html">Chlamydia & Gonorrhea Case Reort Form</a></li>
+              </ul>
+            </div>
+          </div>
+            <div class="col-9">
+                <article>
+                    <div class="form-container">
+                    <form action="#" method="post" autocomplete="off">
+                      <div>
+                        <table>
+                            <thead>
+                              <tr>
+                                <th colspan="10" style="text-align: center;">Hepatitis B Infected Pregnant Woman Reporting Form Confidential Case Report</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td colspan="4">Last Name: <input type="text" id="last_name  name="last_name"></td>
+                                <td colspan="3">First Name: <input type="text" id="first_name" name="first_name"></td>
+                                <td colspan="3">Middle Name: <input type="text" id="middle_name" name="middle_name"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Date of Birth: <input type="text" name="dob_hepb" id="dob_hepb" placeholder="MM/DD/YYYY"></td>
+                                <td colspan="3">Estimated Delivery Date: <input type="text" name="edd" id="edd" placeholder="MM/DD/YYYY"></td>
+                                <td colspan="4"> Patient aware of HBsAg status? 
+                                    <label><input type="radio" name="aware" id="aware_yes" value="yes"> Yes</label>
+                                    <label><input type="radio" name="aware" id="aware_no" value="no"> No</label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Address: <input type="text" id="address" name="address"></td>
+                                <td colspan="3">City: <input type="text" id="city" name="city"></td>
+                                <td colspan="3">State: <input type="text" id="state" name="state"></td>
+                                <td colspan="1">Zip: <input type="text" id="zip" name="zip"></td>
+                            </tr>
+                            
+                            <tr>
+                                <td colspan="3">Phone Number: <input type="text" id="phone" name="phone"></td>
+                                <td colspan="7">Type of Insurance: 
+                                  <label><input type="radio" id="insurance_none" name="insurance[]" value="none"> None</label>
+                                  <label><input type="radio" id="insurance_medicaid" name="insurance[]" value="medicaid"> Medicaid</label>
+                                  <label><input type="radio" id="insurance_medicare" name="insurance[]" value="medicare"> Medicare</label>
+                                  <label><input type="radio" id="insurance_private" name="insurance[]" value="private"> Private</label>
+                                  <label><input type="radio" id="insurance_unk" name="insurance[]" value="unknown"> Unknown</label>
+                              </td>
+                            </tr>
+                           
+                            <tr>
+                                <td colspan="6">Race: 
+                                    <label><input type="checkbox" id="race_american_indian" name="race[]" value="american_indian"> American Indian/Alaskan Native</label>
+                                    <label><input type="checkbox" id="race_asian" name="race[]" value="asian"> Asian</label>
+                                    <label><input type="checkbox" id="race_black" name="race[]" value="black"> Black/African American</label>
+                                    <label><input type="checkbox" id="race_pacific_islander" name="race[]" value="pacific_islander"> Native Hawaiian/Pacific Islander</label>
+                                    <label><input type="checkbox" id="race_white" name="race[]" value="white"> White</label>
+                                    <label><input type="checkbox" id="race_unk" name="race[]" value="unknown"> Unknown</label>
+                                    <label><input type="checkbox" id="race_other" name="race[]" value="other">Other</label>
+                                </td>
+
+                                <td colspan="4">Hispanic: 
+                                  <label><input type="checkbox" id="hispanic_yes" name="hispanic" value="yes"> Yes</label>
+                                  <label><input type="checkbox" id="hispanic_no" name="hispanic" value="no"> no</label>
+                                  <label><input type="checkbox" id="hispanic_unk" name="hispanic" value="unknown"> Unknown</label>
+                              </td>
+                            </tr>
+                           
+                            <tr>
+                                <td colspan="6">Country of Birth</td>
+                                <td colspan="4">Primary Language: <input type="text" name="language"><br/>
+                                  <label><input type="checkbox" name="interpreter" value="needed"> Check if Interpreter Needed</label></td>
+                            </tr>
+                            
+                            <tr>
+                                <th colspan="10">LABORATORY INFORMATION</th>
+                            </tr>
+                            <tr>
+                                <td colspan="10">Laboratory Results (Check all that apply and attach positive Hep B lab results):
+                                    <label><input type="checkbox" id="hbsag" name="lab_results[]" value="hbsag"> HBsAg (+) HBsAg (serotype)</label>
+                                    <label><input type="checkbox" id="hbv_dna" name="lab_results[]" value="hbv_dna"> HBV DNA (+) Viral load</label>
+                                    <label><input type="checkbox" id="hbeag" name="lab_results[]" value="hbeag"> HBeAg (+) HBeAg</label>
+                                    <label><input type="checkbox" id="anti_hbe" name="lab_results[]" value="anti_hbe"> Anti-HBe (+)</label>
+                                    <label><input type="checkbox" id="other_hbp" name="lab_results[]" value="other"> Other (specify)</label>
+                                </td>
+                            </tr>
+                            
+                            <tr>
+                              <th colspan="10">CLINICAL INFORMATION</th>
+                          </tr>
+                          <tr>
+                              <td colspan="4">OB Provider Last Name: <input type="text" name="ob_last_name"></td>
+                              <td colspan="4">OB Provider First Name: <input type="text" name="ob_first_name"></td>
+                              <td colspan="2">Provider Type: 
+                                  <label><input type="radio" name="provider_type" value="md"> MD</label>
+                                  <label><input type="radio" name="provider_type" value="cnm_np"> CNM/NP</label>
+                                  <label><input type="radio" name="provider_type" value="do"> DO</label>
+                                  <label><input type="radio" name="provider_type" value="other"> Other</label>
+                              </td>
+                          </tr>
+                         
+                          <tr>
+                              <td colspan="10">Expected Delivery Facility: <input type="text" id="delivery_facility" name="delivery_facility"></td>
+                          </tr>
+                          <tr>
+                              <td colspan="10">Reporting Health Care Facility: <input type="text" id="reporting_facility" name="reporting_facility"></td>
+                          </tr>
+                          <tr>
+                            <td colspan="3">Address: <input type="text" id="facility_address" name="facility_address"></td>
+                            <td colspan="4">State: <input type="text" id="facility_state" name="facility_state"></td>
+                            <td colspan="3">Zip: <input type="number" id="facility_zip" name="facility_zip"></td>
+                          </tr>
+                          <tr>
+                              <td colspan="10">Contact Person at Reporting Facility: <input type="text" id="facility_contact" name="facility_contact"></td>
+                              
+                          </tr>
+                          <tr>
+                            <td colspan="4">Direct Phone: <input type="tel" id="direct-phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}-[0-9]{4}"></td>
+                              <td colspan="3">Date Form Completed: <input type="date" id="form_date" name="form_date"></td>
+                              <td colspan="3">
+                                  <label><input type="checkbox" id="labs_attached" name="labs_attached" value="yes"> Positive Labs Attached</label>
+                              </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div>
+                        <button type="submit" value="save and exit" class="login-button">Save and Exit</button>
+                        <button type="submit" value="save and exit" class="login-button">Save and Submit</button>
+                      </div>   
+                    </form>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <footer>
+            {% block footer %}
+            {{ super() }}
+            {% endblock footer %}
+        </footer>
+    </body>
+</html>
+
