@@ -2,8 +2,7 @@
     <head>
         {% block head %}
         {{ super() }}
-        {% block title %}Chlamydia and Gonorrhea Page{% endblock title %}
-        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+        {% block title %}Hepatitis B Case Reporting Page{% endblock title %}
         {% endblock head %}
     </head>
     <body>
@@ -148,8 +147,7 @@
                         </tbody>
                       </table>
                       <div>
-                        <button type="submit" value="save and exit" class="login-button">Save and Exit</button>
-                        <button type="submit" value="save and exit" class="login-button">Save and Submit</button>
+                        <button type="submit" value="submit" class="login-button">Submit</button>
                       </div>   
                     </form>
                     </div>
